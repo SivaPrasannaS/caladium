@@ -1,15 +1,14 @@
-FROM node:20-alpine3.18 AS build
+# Stage 1: Build
+FROM node:16 AS build
 
 WORKDIR /app
-COPY . /app
+COPY package.json package-lock.json ./
 
-RUN npm install npm@latest -g
 RUN npm install
+COPY . .
 RUN npm run build
 
-FROM ubuntu
-RUN apt-get update
-RUN apt-get install nginx -y
-COPY --from=build /app/dist /var/www/html/
+FROM nginx:alpine
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
-CMD [ "nginx", "-g", "daemon off;" ]
+CMD ["nginx", "-g", "daemon off;"]
