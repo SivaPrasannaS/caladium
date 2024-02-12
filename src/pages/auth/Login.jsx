@@ -41,7 +41,7 @@ const Login = () => {
                         <Link to="/help" className="cta_text cta_text_need_help">Need help?</Link>
                     </div>
                     <div className="form_text">
-                        <p>New to Caladium? <a href="/sign_up" className='next_auth'>Sign up now</a>.</p>
+                        <p>New to Caladium? <Link href="/sign_up" className='next_auth'>Sign up now</Link>.</p>
                     </div>
                     <div className="form_text_secondary">
                         <p>
