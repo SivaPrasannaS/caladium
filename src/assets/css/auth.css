@@ -1,0 +1,138 @@
+.container {
+  display: flex;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  justify-content: center;
+}
+
+.form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 4px;
+  min-width: 300px;
+  height: 100%;
+  padding: 60px 68px 40px;
+  margin-bottom: 7rem;
+}
+
+.title {
+  display: flex;
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #cdd6e0;
+}
+
+.form_text {
+  display: flex;
+  color: #aeb3b3;
+  font-size: 0.875rem;
+}
+
+.group {
+  position: relative;
+  z-index: 10;
+  display: flex;
+}
+
+.group_input {
+  width: 100%;
+  background: #333;
+  margin-bottom: 14px;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  line-height: 50px;
+  padding: 0px 10px;
+}
+
+.group_input::placeholder {
+  font-size: 1rem;
+  color: #8c8c8c;
+}
+
+.sign_in {
+  margin: 24px 0 12px;
+  padding: 16px;
+  color: #fff;
+  text-decoration: bold;
+  background: #e50914;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sign_up {
+  margin: 24px 0 12px;
+  padding: 16px;
+  color: #fff;
+  text-decoration: bold;
+  background: #e50914;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cta {
+  height: 30px;
+  position: relative;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cta_text {
+  opacity: 1;
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  text-decoration: none;
+  will-change: transform;
+  margin-bottom: 5rem;
+}
+
+.cta_text_need_help {
+  transition: all 0.3s ease-in;
+}
+
+.cta_text_need_help:hover {
+  text-decoration: underline;
+}
+
+::placeholder {
+  font-size: 0.7rem;
+}
+
+.learn_more {
+  width: 100%;
+  height: 100%;
+  color: #0560eb;
+}
+
+.form_text_secondary {
+  display: flex;
+  justify-content: left;
+  color: #aeb3b3;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.next_auth {
+  color: #fff;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
