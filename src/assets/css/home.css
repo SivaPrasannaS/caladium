@@ -1,0 +1,26 @@
+.home_container {
+  width: 100lvw;
+  height: 100%;
+  background-color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: whitesmoke;
+}
+
+.hero_wrapper {
+  width: 100%;
+  height: 500px;
+  background-color: red;
+}
+
+.popular_wrapper,
+.top_picks_wrapper,
+.anime_series_wrapper,
+.blockbuster_wrapper,
+.trending_wrapper {
+  width: 100%;
+  height: 200px;
+  background-color: aqua;
+  margin: 5% 0 0 0;
+}

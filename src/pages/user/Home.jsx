@@ -1,30 +1,27 @@
-import { useEffect, useState } from "react"
-import { userList } from "../../services/user"
+import '../../assets/css/home.css';
+import { HomeCarousel } from '../../components/ui/Carousel';
 
 const Home = () => {
-
-    const [userListData, setUserList] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await userList();
-                setUserList(response.data.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchData();
-    }, []);
-
-
     return (
-        <div>
-            {
-                userListData.map((item) => (
-                    <li key={item.id}>{item.name}</li>
-                ))
-            }
+        <div className="home_container">
+            <section className='hero_wrapper'>
+                <HomeCarousel />
+            </section>
+            <section className='popular_wrapper'>
+                <p>Popular</p>
+            </section>
+            <section className='top_picks_wrapper'>
+                <p>Top Picks</p>
+            </section>
+            <section className='anime_series_wrapper'>
+                <p>Anime Series</p>
+            </section>
+            <section className='blockbuster_wrapper'>
+                <p>Blockbuster</p>
+            </section>
+            <section className='trending_wrapper'>
+                <p>Trending</p>
+            </section>
         </div>
     )
 }

@@ -1,27 +1,56 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../assets/css/auth.css';
 import auth_bg from '../../assets/images/auth_bg.jpeg';
 import { signIn } from '../../services/auth';
+import { useDispatch } from 'react-redux';
+import { setAuthentication, setToken, setUser } from '../../redux/authSlice';
+import { jwtDecode } from 'jwt-decode';
+import { Alert, Space } from 'antd';
 
 const Login = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const emailRef = useRef("");
     const passwordRef = useRef("");
 
+    const [alert, setAlert] = useState({
+        show: false,
+        message: "",
+        type: ""
+    })
+
     const handleFormSubmit = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
+
+        if (!email || !password) {
+            setAlert({
+                ...alert,
+                show: true,
+                message: "Please enter valid email and password",
+                type: "warning"
+            })
+            return;
+        }
+
         const form = {
             email: email,
             password: password
         }
-        signIn(form).then((res) => sessionStorage.setItem('token', res.data.token)).catch((err) => console.log(err));
-        navigate('/home');
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
+
+        signIn(form).then((res) => {
+            if (res?.data?.token) {
+                dispatch(setAuthentication(true))
+                dispatch(setToken(res?.data?.token));
+                dispatch(setUser(jwtDecode(res?.data?.token).user));
+                navigate((jwtDecode(res?.data?.token).user.role === 'USER') ? '/user/home' : '/admin/dashboard');
+            }
+            emailRef.current.value = "";
+            passwordRef.current.value = "";
+        }).catch((err) => console.log(err));
     }
 
     return (
@@ -29,6 +58,17 @@ const Login = () => {
             <div className="container">
                 <div className="form">
                     <h1 className="title">Sign In</h1>
+                    {alert.show && (
+                        <Space
+                            direction="vertical"
+                            style={{
+                                width: '100%',
+                                marginBottom: '5%'
+                            }}
+                        >
+                            <Alert message={alert.message} type={alert.type} showIcon closable />
+                        </Space>
+                    )}
                     <div className="group">
                         <input type="email" required className="group_input" placeholder='Email' ref={emailRef} />
                     </div>
